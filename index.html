@@ -12,33 +12,58 @@
   <title>Awesome Books</title>
 </head>
 <body>
+  <!-- Navbar -->
   <nav>
       <h2 class="logo">Awesome Book</h2>
     <ul>
-      <li><a href="#">List</a></li>
-      <li><a href="#">New</a></li>
-      <li><a href="#">Contact</a></li>
+      <li><a href="#" id="list-btn" class="active">List</a></li>
+      <li><a href="#" id="new-btn">New</a></li>
+      <li><a href="#" id="contact-btn">Contact</a></li>
     </ul>
   </nav>
-  <section>
-    <h1>Awesome Books</h1>
-    <div id="library">
-      <div class="empty" id="empty-id">
-        <h2>Library is empty. Add some books to see them here</h2>
-        <i class="fa-solid fa-book fa-3x"></i>
+  <!-- Loading Screen -->
+  <div class="loader hide" id="load">
+    <div class="loadingio-spinner-ripple-i4e1w3xi5u"><div class="ldio-6cq23kwp2qh">
+      <div></div><div></div>
+      </div></div>
+  </div>
+  <!-- Main content -->
+  <section id="content" class="list-back">
+    <!-- Library -->
+    <div class="list show" id="list-id">
+      <h1>All awesome books</h1>
+      <div id="library">
+        <div class="empty" id="empty-id">
+          <h2>Library is empty. Add some books to see them here</h2>
+          <i class="fa-solid fa-book fa-3x"></i>
+        </div>
       </div>
     </div>
-    <!-- <hr>
-    <h2>Add a new Book</h2>
-    <form action="#" id="form-id">
-      <input type="text" name="title" id="title" placeholder="Title" required>
-      <input type="text" name="author" id="author" placeholder="Author" required>
-      <button id="add-btn" type="submit" >Add</button>
-    </form> -->
+    <!-- Form -->
+    <div class="add hide" id="add-id">
+      <h1>Add a new Book</h1>
+      <form action="#" id="form-id">
+        <input type="text" name="title" id="title" placeholder="Title" required>
+        <input type="text" name="author" id="author" placeholder="Author" required>
+        <button id="add-btn" type="submit" >Add</button>
+      </form>
+    </div>
+    <!-- Contact -->
+    <div class="contact hide" id="contact-id">
+      <h1>Contact Information</h1>
+      <p>Do you have any Information or do you just want to say "Hello"? <br> You can reach out to us!</p>
+      <ul>
+        <li>Our e-mail: awesome@gmail.com</li>
+        <li>Our phone number: 0043586534422</li>
+        <li>Our address: Awesome Street, 2284503 California, U.S.A</li>
+      </ul>
+    </div>
   </section>
+  <!-- Footer -->
   <footer>
-    <p>Copyright @ 2022. A project by Zainab and Okemdi</p>
+    <p>Copyright &copy 2022 All rights reserved | A project by Zainab and Okemdi</p>
   </footer>
+  <!-- Scripts -->
   <script src="./resources/JS/script.js"></script>
   <script src="./resources/JS/localStorage.js"></script>
 </body>
