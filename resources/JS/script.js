@@ -13,6 +13,10 @@ const addSection = document.getElementById('add-id');
 const contactSection = document.getElementById('contact-id');
 const main = document.getElementById('content');
 const loader = document.getElementById('load');
+const footer = document.getElementById('footer');
+
+// Declare local library array
+let library = [];
 
 // Function to show loading screen
 const load = () => {
@@ -24,22 +28,34 @@ const load = () => {
   }, 1000);
 };
 
+// Function to set background for form and contact section
+const setFormBack = () => {
+  main.style.height = '92.2vh';
+  footer.style.position = 'absolute';
+  footer.style.bottom = '0';
+};
+
+const setListBack = () => {
+  main.style.height = '100%';
+  footer.style.position = 'static';
+  footer.style.bottom = '';
+};
+
 // Add event listener to new button to show form
 newBtn.addEventListener('click', () => {
   load();
+  setFormBack();
 
   if (listSection.classList.contains('show')) {
     listSection.classList.replace('show', 'hide');
     listBtn.classList.remove('active');
     addSection.classList.replace('hide', 'show');
-    main.style.height = '90vh';
     main.classList.replace('list-back', 'add-back');
     newBtn.classList.add('active');
   } else {
     contactSection.classList.replace('show', 'hide');
     contactBtn.classList.remove('active');
     addSection.classList.replace('hide', 'show');
-    main.style.height = '90vh';
     main.classList.replace('contact-back', 'add-back');
     newBtn.classList.add('active');
   }
@@ -48,19 +64,18 @@ newBtn.addEventListener('click', () => {
 // Add event listener to contact button to show contact-info
 contactBtn.addEventListener('click', () => {
   load();
+  setFormBack();
 
   if (listSection.classList.contains('show')) {
     listSection.classList.replace('show', 'hide');
     listBtn.classList.remove('active');
     contactSection.classList.replace('hide', 'show');
-    main.style.height = '90vh';
     main.classList.replace('list-back', 'contact-back');
     contactBtn.classList.add('active');
   } else {
     addSection.classList.replace('show', 'hide');
     newBtn.classList.remove('active');
     contactSection.classList.replace('hide', 'show');
-    main.style.height = '90vh';
     main.classList.replace('add-back', 'contact-back');
     contactBtn.classList.add('active');
   }
@@ -70,19 +85,20 @@ contactBtn.addEventListener('click', () => {
 listBtn.addEventListener('click', () => {
   load();
 
+  if (library.length >= 4) {
+    setListBack();
+  }
+
   if (addSection.classList.contains('show')) {
     addSection.classList.replace('show', 'hide');
     newBtn.classList.remove('active');
     listSection.classList.replace('hide', 'show');
-    main.style.height = '';
     main.classList.replace('add-back', 'list-back');
-    main.style.paddingBottom = '150px';
     listBtn.classList.add('active');
   } else {
     contactSection.classList.replace('show', 'hide');
     contactBtn.classList.remove('active');
     listSection.classList.replace('hide', 'show');
-    main.style.paddingBottom = '150px';
     main.classList.replace('contact-back', 'list-back');
     listBtn.classList.add('active');
   }
@@ -92,9 +108,6 @@ listBtn.addEventListener('click', () => {
 function displayEmpty() {
   empty.classList.toggle('hide');
 }
-
-// Declare local library array
-let library = [];
 
 // Create class declaration for books in library
 class Book {
@@ -118,6 +131,9 @@ const addRemoveListener = (book) => {
   document.getElementById(`remove-${book.id}`).addEventListener('click', (e) => {
     e.preventDefault();
     book.removeBook();
+    if (library.length === 2) {
+      setFormBack();
+    }
     localStorage.setItem('library', JSON.stringify(library));
     if (!library.length) {
       displayEmpty();
@@ -154,6 +170,11 @@ if (localStorage.getItem('library')) {
     appendBook(newBook);
     addRemoveListener(newBook);
   });
+  if (library.length >= 4) {
+    setListBack();
+  } else {
+    setFormBack();
+  }
 }
 
 // Add submit event listener to form to add book to local storage and DOM
@@ -174,8 +195,9 @@ form.addEventListener('submit', (e) => {
   addSection.classList.replace('show', 'hide');
   newBtn.classList.remove('active');
   listSection.classList.replace('hide', 'show');
-  main.style.height = '';
   main.classList.replace('add-back', 'list-back');
-  main.style.paddingBottom = '150px';
   listBtn.classList.add('active');
+  if (library.length >= 4) {
+    setListBack();
+  }
 });
