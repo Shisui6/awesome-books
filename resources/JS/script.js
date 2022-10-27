@@ -171,17 +171,11 @@ form.addEventListener('submit', (e) => {
   bookTitle.value = '';
 
   load();
-  if (addSection.classList.contains('show')) {
-    addSection.classList.replace('show', 'hide');
-    newBtn.classList.remove('active');
-    listSection.classList.replace('hide', 'show');
-    main.style.paddingBottom = '150px';
-    listBtn.classList.add('active');
-  } else {
-    contactSection.classList.replace('show', 'hide');
-    contactBtn.classList.remove('active');
-    listSection.classList.replace('hide', 'show');
-    main.style.paddingBottom = '150px';
-    listBtn.classList.add('active');
-  }
+  addSection.classList.replace('show', 'hide');
+  newBtn.classList.remove('active');
+  listSection.classList.replace('hide', 'show');
+  main.style.height = '';
+  main.classList.replace('add-back', 'list-back');
+  main.style.paddingBottom = '150px';
+  listBtn.classList.add('active');
 });

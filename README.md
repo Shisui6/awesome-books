@@ -10,7 +10,7 @@
 
 ## Live Demo
 
-![image](https://user-images.githubusercontent.com/37116322/198077199-9c410879-d5c4-4b36-9b27-a7248747ab2e.png)
+![image](https://user-images.githubusercontent.com/37116322/198222857-11126877-d9d8-4a61-af15-033754f2861c.png)
 
 ## Getting Started
 
