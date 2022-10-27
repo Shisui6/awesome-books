@@ -14,60 +14,63 @@ body {
 
 /* Navbar */
 
-nav {
+header nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 4rem;
+  padding: 20px 1.5rem;
   height: 50px;
   box-shadow: 0 8px 16px 0 rgba(54, 153, 195, 0.3);
 }
 
 .logo {
-  color: rgb(54, 153, 195);
-  margin: 0;
+  color: #3699c3;
+  font-size: 16px;
 }
 
-nav ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+header ul {
+  display: none;
 }
 
-nav li {
+header li {
   display: inline-block;
   margin-left: 25px;
 }
 
-nav a {
+header a {
   text-decoration: none;
   color: #000;
 }
 
-nav a:hover {
-  color: rgb(54, 153, 195);
+header a:hover {
+  color: #3699c3;
 }
 
 .active {
-  color: rgb(54, 153, 195);
+  color: #3699c3;
   font-weight: 600;
 }
 
-/* Main */
-
-#content {
-  height: 92.2vh;
+.mobile-menu button {
+  background-color: #fff;
+  border: none;
 }
 
-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 100px;
-  padding-bottom: 100px;
+/* Mobile Menu */
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(54, 153, 195, 0.6);
+  backdrop-filter: blur(6px);
+  padding-left: 28px;
   opacity: 0;
   animation: fadeIn 0.5s;
   animation-fill-mode: forwards;
+  z-index: 5;
 }
 
 @keyframes fadeIn {
@@ -76,10 +79,65 @@ section {
   }
 }
 
+#close {
+  float: right;
+  margin-right: 38px;
+  margin-top: 62px;
+  color: #fff;
+  background: none;
+  border: none;
+}
+
+.menu ul {
+  margin-top: -300px;
+  animation: animateTop 1.5s;
+  animation-fill-mode: forwards;
+  animation-delay: 0.5s;
+  list-style: none;
+  padding: 0;
+}
+
+@keyframes animateTop {
+  100% {
+    margin-top: 106px;
+  }
+}
+
+.menu li {
+  margin-bottom: 20px;
+}
+
+.menu-item {
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 44px;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Main */
+
+#content {
+  height: 92.2vh;
+  padding-left: 30px;
+  padding-right: 30px;
+  opacity: 0;
+  animation: fadeIn 0.5s;
+  animation-fill-mode: forwards;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
 h1 {
   text-align: center;
-  font-size: 35px;
-  color: rgb(54, 153, 195);
+  font-size: 30px;
+  color: #3699c3;
   margin-top: 0;
 }
 
@@ -102,7 +160,7 @@ h1 {
 }
 
 #library {
-  width: 50%;
+  width: 100%;
   margin: 0 auto;
   box-shadow: 0 8px 16px 0 rgba(255, 255, 255, 0.2);
   margin-bottom: 40px;
@@ -124,7 +182,7 @@ h1 {
 }
 
 .fa-book {
-  color: rgb(54, 153, 195);
+  color: #3699c3;
 }
 
 .book {
@@ -139,7 +197,7 @@ h1 {
 }
 
 .book:hover {
-  background-color: rgb(54, 153, 195);
+  background-color: #3699c3;
   color: #fff;
 }
 
@@ -181,7 +239,7 @@ h1 {
 }
 
 form {
-  width: 30%;
+  width: 100%;
   margin: 30px auto 0;
 }
 
@@ -198,8 +256,8 @@ input {
 #add-btn {
   float: right;
   padding: 7px 20px;
-  background-color: rgb(54, 153, 195);
-  border: 2px solid rgb(54, 153, 195);
+  background-color: #3699c3;
+  border: 2px solid #3699c3;
   color: #fff;
   cursor: pointer;
   border-radius: 10px;
@@ -221,6 +279,14 @@ input {
   margin-bottom: 40px;
 }
 
+.contact p {
+  text-align: center;
+}
+
+.contact ul {
+  margin-left: 30px;
+}
+
 .contact p,
 .contact li {
   line-height: 20px;
@@ -236,7 +302,7 @@ input {
 /* Footer */
 
 footer {
-  width: 100%;
+  width: 84%;
   text-align: center;
   padding: 5px 0;
   color: #fff;
@@ -306,4 +372,56 @@ footer {
   transform: translateZ(0) scale(1);
   backface-visibility: hidden;
   transform-origin: 0 0;
+}
+
+/* Media Queries */
+
+@media screen and (min-width: 768px) {
+  header nav {
+    padding: 20px 4rem;
+  }
+
+  .mobile-menu button {
+    display: none;
+  }
+
+  .logo {
+    font-size: 24px;
+  }
+
+  nav ul {
+    display: block;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  #content {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  h1 {
+    font-size: 35px;
+  }
+
+  #library {
+    width: 50%;
+  }
+
+  form {
+    width: 30%;
+  }
+
+  .contact p {
+    text-align: left;
+  }
+
+  .contact ul {
+    margin-left: 0;
+  }
+
+  footer {
+    width: 100%;
+  }
 }

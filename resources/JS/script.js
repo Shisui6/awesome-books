@@ -1,6 +1,3 @@
-// Function to generate random id's when called
-const uid = () => Date.now().toString(36) + Math.random().toString(36).substr(2);
-
 // Get all relevant elements from the DOM
 const booksSection = document.getElementById('library');
 const form = document.getElementById('form-id');
@@ -14,9 +11,35 @@ const contactSection = document.getElementById('contact-id');
 const main = document.getElementById('content');
 const loader = document.getElementById('load');
 const footer = document.getElementById('footer');
+const menuButton = document.getElementById('menu-button');
+const menu = document.getElementById('menu-id');
+const closeButton = document.getElementById('close');
+const menuAdd = document.getElementById('menu-add');
+const menuContact = document.getElementById('menu-contact');
+const menuList = document.getElementById('menu-list');
 
 // Declare local library array
 let library = [];
+
+// Create class declaration for books in library
+class Book {
+  constructor(id, title, author) {
+    this.id = id;
+    this.title = title;
+    this.author = author;
+  }
+
+  addBook = () => {
+    library.push(this);
+  };
+
+  removeBook = () => {
+    library = library.filter((book) => book.id !== this.id);
+  };
+}
+
+// Function to generate random id's when called
+const uid = () => Date.now().toString(36) + Math.random().toString(36).substr(2);
 
 // Function to show loading screen
 const load = () => {
@@ -28,21 +51,30 @@ const load = () => {
   }, 1000);
 };
 
-// Function to set background for form and contact section
+// Function to set background styling for form and contact section
 const setFormBack = () => {
   main.style.height = '92.2vh';
   footer.style.position = 'absolute';
   footer.style.bottom = '0';
 };
 
+// Function to set background styling for list section
 const setListBack = () => {
   main.style.height = '100%';
   footer.style.position = 'static';
   footer.style.bottom = '';
 };
 
-// Add event listener to new button to show form
-newBtn.addEventListener('click', () => {
+// Function to hide and show mobile menu
+const toggleMenu = () => {
+  menu.classList.toggle('hide');
+};
+
+menuButton.addEventListener('click', toggleMenu);
+closeButton.addEventListener('click', toggleMenu);
+
+// Function to change change page content when new button is clicked
+const changeContentFromNew = () => {
   load();
   setFormBack();
 
@@ -59,10 +91,10 @@ newBtn.addEventListener('click', () => {
     main.classList.replace('contact-back', 'add-back');
     newBtn.classList.add('active');
   }
-});
+};
 
-// Add event listener to contact button to show contact-info
-contactBtn.addEventListener('click', () => {
+// Function to change change page content when contact button is clicked
+const changeContentFromContact = () => {
   load();
   setFormBack();
 
@@ -79,10 +111,10 @@ contactBtn.addEventListener('click', () => {
     main.classList.replace('add-back', 'contact-back');
     contactBtn.classList.add('active');
   }
-});
+};
 
-// Add event listener to list button to show library
-listBtn.addEventListener('click', () => {
+// Function to change change page content when list button is clicked
+const changeContentFromList = () => {
   load();
 
   if (library.length >= 4) {
@@ -102,28 +134,11 @@ listBtn.addEventListener('click', () => {
     main.classList.replace('contact-back', 'list-back');
     listBtn.classList.add('active');
   }
-});
+};
 
 // Function to show / hide empty library message
 function displayEmpty() {
   empty.classList.toggle('hide');
-}
-
-// Create class declaration for books in library
-class Book {
-  constructor(id, title, author) {
-    this.id = id;
-    this.title = title;
-    this.author = author;
-  }
-
-  addBook = () => {
-    library.push(this);
-  };
-
-  removeBook = () => {
-    library = library.filter((book) => book.id !== this.id);
-  };
 }
 
 // Function to add click event to remove button remove book from DOM
@@ -160,6 +175,27 @@ const appendBook = (book) => {
     displayEmpty();
   }
 };
+
+// Add event listener to new button to show form
+newBtn.addEventListener('click', changeContentFromNew);
+menuAdd.addEventListener('click', () => {
+  toggleMenu();
+  changeContentFromNew();
+});
+
+// Add event listener to contact button to show contact-info
+contactBtn.addEventListener('click', changeContentFromContact);
+menuContact.addEventListener('click', () => {
+  toggleMenu();
+  changeContentFromContact();
+});
+
+// Add event listener to list button to show library
+listBtn.addEventListener('click', changeContentFromList);
+menuList.addEventListener('click', () => {
+  toggleMenu();
+  changeContentFromList();
+});
 
 // Check if local storage exists on page load and use data to add books to DOM
 if (localStorage.getItem('library')) {

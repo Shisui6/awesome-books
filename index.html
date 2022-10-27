@@ -13,14 +13,34 @@
 </head>
 <body>
   <!-- Navbar -->
-  <nav>
+  <header>
+    <nav>
       <h2 class="logo">Awesome Books</h2>
-    <ul>
-      <li><a href="#" id="list-btn" class="active">List</a></li>
-      <li><a href="#" id="new-btn">New</a></li>
-      <li><a href="#" id="contact-btn">Contact</a></li>
-    </ul>
-  </nav>
+      <div class="mobile-menu">
+        <button id="menu-button">
+          <i class="fa-solid fa-bars fa-2xl"></i>
+        </button>
+      </div>
+      <ul>
+        <li><a href="#" id="list-btn" class="active">List</a></li>
+        <li><a href="#" id="new-btn">New</a></li>
+        <li><a href="#" id="contact-btn">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- Mobile Menu -->
+  <div class="menu hide" id="menu-id">
+    <button id="close">
+      <i class="fa-solid fa-x"></i>
+    </button>
+    <nav>
+      <ul>
+        <li><a href="#" id="menu-list" class="menu-item">List</a></li>
+        <li><a href="#" id="menu-add" class="menu-item">New</a></li>
+        <li><a href="#" id="menu-contact" class="menu-item">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
   <!-- Loading Screen -->
   <div class="loader hide" id="load">
     <div class="loadingio-spinner-ripple-i4e1w3xi5u"><div class="ldio-6cq23kwp2qh">
