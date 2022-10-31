@@ -10,6 +10,7 @@ body {
   font-family: 'Montserrat', sans-serif;
   margin: 0;
   padding: 0;
+  min-height: 500px;
 }
 
 /* Navbar */
@@ -118,12 +119,19 @@ header a:hover {
 /* Main */
 
 #content {
-  height: 92.2vh;
+  height: calc(100vh - 50px);
   padding-left: 30px;
   padding-right: 30px;
   opacity: 0;
   animation: fadeIn 0.5s;
   animation-fill-mode: forwards;
+}
+
+#time {
+  position: absolute;
+  right: 30px;
+  top: 60px;
+  color: #fff;
 }
 
 section {
@@ -375,6 +383,17 @@ footer {
 }
 
 /* Media Queries */
+
+@media screen and (max-width: 915px) and (orientation: landscape) {
+  #content {
+    height: 100% !important;
+  }
+
+  footer {
+    width: 100%;
+    position: static !important;
+  }
+}
 
 @media screen and (min-width: 768px) {
   header nav {

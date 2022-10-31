@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/e83d856101.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="./resources/CSS/style.css">
+  <link rel="stylesheet" href="./resources/CSS/index.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Awesome Books</title>
 </head>
@@ -50,11 +50,12 @@
   <!-- Main content -->
   <div id="content" class="list-back">
     <section>
+      <p id="time"></p>
       <!-- Library -->
       <div class="list show" id="list-id">
         <h1>All awesome books</h1>
         <div id="library">
-          <div class="empty" id="empty-id">
+          <div class="empty hide" id="empty-id">
             <h2>Library is empty. Add some books to see them here</h2>
             <i class="fa-solid fa-book fa-3x"></i>
           </div>
@@ -86,7 +87,6 @@
     </footer>
   </div>
   <!-- Scripts -->
-  <script src="./resources/JS/script.js"></script>
-  <script src="./resources/JS/localStorage.js"></script>
+  <script type="module" src="./resources/JS/index.js"></script>
 </body>
 </html>
