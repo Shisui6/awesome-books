@@ -21,7 +21,7 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 My Day <a name="about-project"></a>
+# 📖 Awesome Books <a name="about-project"></a>
 
 **Awesome Books** is a simple website that displays a list of books and allows you to add and remove books from that list.
 
